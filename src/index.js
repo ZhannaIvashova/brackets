@@ -1,5 +1,5 @@
-const closedSymbol = [')', ']', '}', '|', '2', '4', '6', '7', '8']
-const symbols = {
+//const closedSymbol = [')', ']', '}', '|', '2', '4', '6', '7', '8']
+/*const symbols = {
     ')': '(',
     ']': '[',
     '}': '{',
@@ -9,10 +9,16 @@ const symbols = {
     '6': '5',
     '7': '7',
     '8': '8'
-}
+}*/
 
 module.exports = function check(str, bracketsConfig) {
     const listConfig = bracketsConfig.reduce((acc, cur) => acc.concat(cur) , [])
+    const closedSymbol = [];
+    const symbols = {};
+    for(let [open, close] of bracketsConfig) {
+      closedSymbol.push(close);
+      symbols[close] = open
+    }
 
     const result = [];
 
